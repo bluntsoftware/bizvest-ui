@@ -1,0 +1,32 @@
+<mat-toolbar class="header" color="primary-light">
+  <h1>{{registrar.company}}</h1>
+</mat-toolbar>
+
+<ng-container *ngFor="let message of messages; let i = index; let first = first; let last = last; trackBy: trackByFn" >
+  <ng-container *ngIf="first || (messages[i - 1].timestamp | date:'d') !== (message.timestamp | date:'d')">
+    <h2>{{message.timestamp | date: 'longDate'}}</h2>
+  </ng-container>
+  <div class="chat-message">
+    <div  [ngClass]="{'right-bubble': message.isMine, 'left-bubble': !message.isMine }" #chatItem>
+      <span class="msg-name">{{message.senderName}}</span>
+      <span class="msg-date"> - {{message.timestamp | date:'medium'}}</span>
+      <p>{{message.content}}</p>
+    </div>
+  </div>
+</ng-container>
+
+<div class="footer color-primary" fxLayout="row"  fxLayoutGap="0px" fxLayoutGap.lt-md="0px"  >
+    <button mat-icon-button>
+      <mat-icon>mood</mat-icon>
+    </button>
+    <button class="ml-0.5" mat-icon-button>
+      <mat-icon>attach_file</mat-icon>
+    </button>
+    <mat-form-field color="primary" >
+        <input matInput name="message" [(ngModel)]="message" (keydown.enter)="sendMessage()"  />
+    </mat-form-field>
+    <button mat-icon-button (click)="sendMessage()">
+      <mat-icon class="rotate-90">send</mat-icon>
+    </button>
+</div>
+

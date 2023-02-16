@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>Chat</h1>
+</mat-toolbar>
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true" >
+    <mat-toolbar color="primary-dark">
+      <h1>{{user.name}}</h1>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item role="listitem" *ngFor="let user of users" (click)="show(user.id)" >
+        {{user.company}} - {{user.count}}
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="chat-box" #scrollFrame>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

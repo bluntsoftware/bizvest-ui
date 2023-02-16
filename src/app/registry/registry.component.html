@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>Registry</h1>
+</mat-toolbar>
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true" >
+    <mat-nav-list>
+      <mat-list-item role="listitem" *ngFor="let registrar of registrars" (click)="show(registrar.id)">
+        {{registrar.company}}
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
