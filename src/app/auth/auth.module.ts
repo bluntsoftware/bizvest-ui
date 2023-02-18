@@ -12,7 +12,7 @@ import {AuthService} from "./auth.service";
         HttpClientModule,
         OAuthModule.forRoot({
             resourceServer: {
-                allowedUrls: ['http://localhost:9096/api/v1/','http://localhost:9094/','https://saasy-service.bluntsoftware.com/api/v1/'],
+                allowedUrls: ['http://localhost:9096/api/v1/','http://localhost:9094/','https://bizvest-service-pqjwqny6pq-uc.a.run.app','https://saasy-service.bluntsoftware.com/api/v1/'],
                 sendAccessToken: true
             }
         })
